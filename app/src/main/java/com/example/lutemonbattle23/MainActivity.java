@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = MainActivity.this;
+        Storage.getInstance().loadLutemons(context);
         Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);
     }
