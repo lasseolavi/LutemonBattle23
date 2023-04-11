@@ -7,13 +7,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
 
     private Context context;
 
+    private ArrayList<Lutemon> lutemons;
 
+    public LutemonListAdapter(Context context, ArrayList<Lutemon> lutemons) {
+        this.context = context;
+        this.lutemons = lutemons;
+    }
 
     @NonNull
     @Override
@@ -23,11 +29,11 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position) {
-
+        holder.bind(lutemons.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lutemons.size();
     }
 }

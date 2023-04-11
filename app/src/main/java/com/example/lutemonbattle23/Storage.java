@@ -42,5 +42,8 @@ public class Storage {
         }
         return chosenLutemon;
     }
+    public ArrayList listLutemons(){
+        return lutemons;
+    }
 
 }
