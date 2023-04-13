@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> {
 
@@ -25,6 +26,16 @@ public class LutemonListAdapter extends RecyclerView.Adapter<LutemonViewHolder> 
     @Override
     public LutemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new LutemonViewHolder(LayoutInflater.from(context).inflate(R.layout.lutemon_view,parent,false));
+    }
+    public void sortLutemons(ArrayList<Lutemon> lutemonList) {
+        Collections.sort(lutemonList, new Comparator<Lutemon>() {
+            @Override
+            public int compare(Lutemon lutemon, Lutemon t1) {
+                return lutemon.getName().compareTo(t1.getName());
+            }
+        });
+        lutemons = lutemonList;
+        notifyDataSetChanged();
     }
 
     @Override
