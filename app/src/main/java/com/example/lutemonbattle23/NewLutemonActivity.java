@@ -16,7 +16,6 @@ public class NewLutemonActivity extends AppCompatActivity {
     private RadioGroup colorRG;
     private int id = 0;
     private LutemonListAdapter lutemonListAdapter;
-    private RecyclerView recyclerView;
 
 
 
@@ -80,9 +79,8 @@ public class NewLutemonActivity extends AppCompatActivity {
 
         Lutemon lutemon = new Lutemon (name, color, attack, defense, experience, health, maxHealth, id++);
         Storage.getInstance().addLutemon(lutemon, context);
-        lutemonListAdapter = new LutemonListAdapter(context,Storage.getInstance().listLutemons());
-        int position = Storage.getInstance().listLutemons().size()-1;
-        lutemonListAdapter.notifyItemInserted(position);
+        lutemonListAdapter = new LutemonListAdapter(this, Storage.getInstance().listLutemons());
+        lutemonListAdapter.notifyDataSetChanged();
         //TODO: id nollaantuu kun sovelluksen sammuttaa
     }
 

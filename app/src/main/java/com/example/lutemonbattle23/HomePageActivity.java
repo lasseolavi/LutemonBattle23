@@ -1,5 +1,6 @@
 package com.example.lutemonbattle23;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,15 +23,21 @@ public class HomePageActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rvLutemonList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new LutemonListAdapter(getApplicationContext(), storage.listLutemons()));
+        lutemonListAdapter = new LutemonListAdapter(this, storage.listLutemons());
+        lutemonListAdapter.sortLutemons(storage.listLutemons());
+        recyclerView.setAdapter(lutemonListAdapter);
 
     }
     public void switchToNewLutemon(View view) {
         Intent intent = new Intent(this, NewLutemonActivity.class);
         startActivity(intent);
     }
-    protected void onResume(View view) {
+    public void switchToBattleField(View view) {
+        Intent intent= new Intent(this, BattleFieldActivity.class);
+        startActivity(intent);
+    }
+    protected void onResume() {
         super.onResume();
-        lutemonListAdapter.notifyDataSetChanged();
+        lutemonListAdapter.sortLutemons(Storage.getInstance().listLutemons());
     }
 }
