@@ -25,7 +25,9 @@ public class Storage {
         return storage;
     }
     public void addLutemon(Lutemon lutemon, Context context) {
+        System.out.println(lutemons.size());
         lutemons.add(lutemon);
+        System.out.println(lutemons.size());
         try {
             ObjectOutputStream lutemonWriter = new ObjectOutputStream(context.openFileOutput(FILENAME,Context.MODE_PRIVATE));
             lutemonWriter.writeObject(lutemons);
