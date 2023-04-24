@@ -10,20 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class LutemonBattleFieldListAdapter extends RecyclerView.Adapter<LutemonBattleFieldViewHolder> {
-    private ArrayList<Lutemon> battleFieldLutemons;
-    private int count;
-    private Lutemon firstSelected;
-    private Lutemon secondSelected;
-    private Button startBattleButton;
-    private StartBattleListener mListener;
+    private ArrayList<Lutemon> battleFieldLutemons, selectedLutemons;
+
+
+
+
 
     public LutemonBattleFieldListAdapter(ArrayList<Lutemon> lutemons) {
         battleFieldLutemons = lutemons;
-        count = 0;
     }
-    public void setStartBattleListener(StartBattleListener listener) {
-        mListener = listener;
-    }
+
 
     @NonNull
     @Override
@@ -35,37 +31,26 @@ public class LutemonBattleFieldListAdapter extends RecyclerView.Adapter<LutemonB
     public void onBindViewHolder(@NonNull LutemonBattleFieldViewHolder holder, int position) {
         Lutemon lutemon = battleFieldLutemons.get(position);
         holder.bind(lutemon);
+        selectedLutemons = new ArrayList<>();
 
         holder.getCheckBox().setOnCheckedChangeListener((compoundButton, isChecked) -> {
             if (isChecked) {
-                count++;
+                selectedLutemons.add(lutemon);
 
-                if (count == 1) {
-                    firstSelected = lutemon;
-                } else if (count == 2) {
-                    secondSelected = lutemon;
-                }
             } else {
-                count--;
+                selectedLutemons.remove(lutemon);
 
-                if (firstSelected == lutemon) {
-                    firstSelected = null;
-                } else if (secondSelected == lutemon) {
-                    secondSelected = null;
-                }
             }
-            //TODO: Tässä kohtaaa oikeat oliot tallentuu, nyt pitää keksiä tapa saada taistelu aloitettua vasta napppia painamalla
+
         });
     }
-    public Lutemon getFirstSelected(){
-        return firstSelected;
-    }
-    public Lutemon getSecondSelected(){
-        return secondSelected;
-    }
+
 
     @Override
     public int getItemCount() {
         return battleFieldLutemons.size();
+    }
+    public ArrayList getSelectedLutemons() {
+        return selectedLutemons;
     }
 }

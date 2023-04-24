@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".BattleFieldActivity">
+
 
     <TextView
         android:id="@+id/ChooseFighter_tv"
@@ -18,7 +20,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBattleLutemons"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:layout_marginTop="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,19 +30,42 @@
         android:id="@+id/startBattleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="Aloita taistelu!"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvBattleLutemons" />
 
     <TextView
-        android:id="@+id/battleTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/firstPlayerTv"
+        android:layout_width="204dp"
+        android:layout_height="245dp"
         android:layout_marginTop="9dp"
-        android:text="Taistelu tulee tähän"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="1dp"
+        android:text="firstPlayer"
+        app:layout_constraintBottom_toTopOf="@+id/battleLogTv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startBattleButton" />
+
+    <TextView
+        android:id="@+id/secondPlayerTv"
+        android:layout_width="203dp"
+        android:layout_height="251dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="1dp"
+        android:text="secondPlayer"
+        app:layout_constraintBottom_toTopOf="@+id/battleLogTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/firstPlayerTv"
+        app:layout_constraintTop_toBottomOf="@+id/startBattleButton" />
+
+    <TextView
+        android:id="@+id/battleLogTv"
+        android:layout_width="408dp"
+        android:layout_height="78dp"
+        android:text="battleLog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ public class Storage {
     private static Storage storage = null;
 
     private static final String FILENAME = "lutemons.data";
+    private int savedId;
 
     private Storage(){
     }
@@ -40,6 +41,8 @@ public class Storage {
         try {
             ObjectInputStream lutemonReader = new ObjectInputStream(context.openFileInput(FILENAME));
             lutemons = (ArrayList<Lutemon>) lutemonReader.readObject();
+            // Find out the highest id number and set id to the next
+            savedId = lutemons.isEmpty() ? 1 : lutemons.get(lutemons.size()-1).getId() +1 ;
             lutemonReader.close();
 
         }catch (FileNotFoundException e){
@@ -67,5 +70,16 @@ public class Storage {
     public ArrayList listLutemons(){
         return lutemons;
     }
+    public void removeLutemon(Lutemon removableLutemon, Context context) {
+        lutemons.remove(removableLutemon);
+        try {
+            ObjectOutputStream lutemonWriter = new ObjectOutputStream(context.openFileOutput(FILENAME,Context.MODE_PRIVATE));
+            lutemonWriter.writeObject(lutemons);
+            lutemonWriter.close();
+        } catch (IOException e) {
+            System.out.println("Lutemonien tallentaminen ei onnistunut");
+        }
+    }
+    public int getSavedId(){return savedId;}
 
 }
