@@ -18,6 +18,9 @@
             android:name=".NewLutemonActivity"
             android:exported="false" />
         <activity
+            android:name=".TrainingAreaActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomePageActivity"
             android:exported="false"/>
         <activity

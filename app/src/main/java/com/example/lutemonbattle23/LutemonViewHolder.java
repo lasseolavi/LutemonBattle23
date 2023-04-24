@@ -14,6 +14,7 @@ public class LutemonViewHolder extends RecyclerView.ViewHolder {
     private TextView name, attack, defense, health, experience;
     private ImageView lutemonAvatar;
 
+    private Button infoButton;
 
 
 
@@ -26,6 +27,7 @@ public class LutemonViewHolder extends RecyclerView.ViewHolder {
         defense = itemView.findViewById(R.id.tv_defense);
         health = itemView.findViewById(R.id.tv_health);
         experience = itemView.findViewById(R.id.tv_experience);
+        infoButton = itemView.findViewById(R.id.lutemonInformationButton);
     }
 
     public void bind(Lutemon lutemon){

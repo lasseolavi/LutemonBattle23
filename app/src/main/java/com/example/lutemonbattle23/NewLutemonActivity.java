@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class NewLutemonActivity extends AppCompatActivity {
     private Context context;
 
+
     private EditText nameEditText;
     private RadioGroup colorRG;
-    private int id = 0;
+    private int id;
     private LutemonListAdapter lutemonListAdapter;
 
 
@@ -23,6 +24,8 @@ public class NewLutemonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_lutemon);
+        id = Storage.getInstance().getSavedId();
+
         context = this;
 
     }
@@ -33,55 +36,44 @@ public class NewLutemonActivity extends AppCompatActivity {
 
         String name = nameEditText.getText().toString();
 
-        String color = "";
-        int attack = 0;
-        int defense = 0;
-        int experience = 0;
-        int health = 0;
-        int maxHealth = 0;
 
+        GreenLutemon lutemon = null;
         switch (colorRG.getCheckedRadioButtonId()) {
             case R.id.whiteButton:
-                color = "valkoinen";
-                attack = 5;
-                defense = 4;
-                maxHealth = 20;
+
+                WhiteLutemon whiteLutemon = new WhiteLutemon(name, id++);
+                Storage.getInstance().addLutemon(whiteLutemon, context);
                 break;
+
             case R.id.greenButton:
 
+                GreenLutemon greenLutemon = new GreenLutemon(name, id++);
+                Storage.getInstance().addLutemon(greenLutemon, context);
+                break;
 
-                color = "vihreä";
-                attack = 6;
-                defense = 3;
-                maxHealth = 19;
-                break;
             case R.id.pinkButton:
-                color = "pinkki";
-                attack = 7;
-                defense = 2;
-                maxHealth = 18;
+
+                PinkLutemon pinkLutemon = new PinkLutemon(name, id++);
+                Storage.getInstance().addLutemon(pinkLutemon, context);
                 break;
+
             case R.id.orangeButton:
-                color = "oranssi";
-                attack = 8;
-                defense = 1;
-                maxHealth = 17;
+
+                OrangeLutemon orangeLutemon = new OrangeLutemon(name, id++);
+                Storage.getInstance().addLutemon(orangeLutemon, context);
                 break;
+
             case R.id.blackButton:
-                color = "musta";
-                attack = 9;
-                defense = 0;
-                maxHealth = 16;
+                BlackLutemon blackLutemon = new BlackLutemon(name, id++);
+                Storage.getInstance().addLutemon(blackLutemon, context);
                 break;
         }
 
-        health = maxHealth;
 
-        Lutemon lutemon = new Lutemon (name, color, attack, defense, experience, health, maxHealth, id++);
-        Storage.getInstance().addLutemon(lutemon, context);
+
+
         lutemonListAdapter = new LutemonListAdapter(this, Storage.getInstance().listLutemons());
         lutemonListAdapter.notifyDataSetChanged();
-        //TODO: id nollaantuu kun sovelluksen sammuttaa
     }
 
 }

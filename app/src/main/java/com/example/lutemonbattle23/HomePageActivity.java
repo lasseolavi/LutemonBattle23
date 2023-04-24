@@ -36,8 +36,15 @@ public class HomePageActivity extends AppCompatActivity {
         Intent intent= new Intent(this, BattleFieldActivity.class);
         startActivity(intent);
     }
+    public void switchToTrainingArea(View view) {
+        Intent intent = new Intent(this, TrainingAreaActivity.class);
+        startActivity(intent);
+    }
     protected void onResume() {
         super.onResume();
         lutemonListAdapter.sortLutemons(Storage.getInstance().listLutemons());
+    }
+    public void switchToInformation(View view){
+
     }
 }

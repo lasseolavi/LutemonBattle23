@@ -24,6 +24,7 @@
         android:layout_height="62dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
+        android:onClick="switchToTrainingArea"
         android:text="Siirry harjoitus-alueelle"
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/newLutemonButton"
