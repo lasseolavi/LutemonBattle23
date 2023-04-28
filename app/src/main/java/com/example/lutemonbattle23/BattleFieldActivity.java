@@ -86,9 +86,14 @@ public class BattleFieldActivity extends AppCompatActivity {
                         if (defendingLutemon.health <= 0) {
                             Lutemon winner = currentAttacker;
                             Lutemon loser = getOtherLutemon(winner, firstSelection, secondSelection);
-                            //remove dead lutemon
-                            storage.removeLutemon(loser, getApplicationContext());
+                            loser.setHealth(0);
+                            storage.killLutemon(loser);
                             winner.setHealth(winner.getMaxHealth());
+                            winner.addWonGame();
+                            Lutemon.setExperience(winner);
+                            winner.addgamePlayed();
+                            loser.addgamePlayed();
+                            storage.saveCurrentState(getApplicationContext());
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
@@ -118,9 +123,10 @@ public class BattleFieldActivity extends AppCompatActivity {
                                 }
                             });
                             break;
+                        } else {
+                            currentAttacker = defendingLutemon;
+                            Thread.sleep(200);
                         }
-                        currentAttacker = defendingLutemon;
-                        Thread.sleep(2000);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

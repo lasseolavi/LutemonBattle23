@@ -40,6 +40,10 @@ public class HomePageActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TrainingAreaActivity.class);
         startActivity(intent);
     }
+    public void switchToDeadLutemons(View view) {
+        Intent intent = new Intent(this, DeadLutemonsActivity.class);
+        startActivity(intent);
+    }
     protected void onResume() {
         super.onResume();
         lutemonListAdapter.sortLutemons(Storage.getInstance().listLutemons());

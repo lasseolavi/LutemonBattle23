@@ -45,11 +45,34 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLutemonList"
         android:layout_width="409dp"
-        android:layout_height="0dp"
+        android:layout_height="430dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toTrainingAreaButton" />
+        app:layout_constraintTop_toBottomOf="@+id/toTrainingAreaButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/deadLutemonsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="switchToDeadLutemons"
+        android:text="Kuolleet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvLutemonList" />
+
+    <Button
+        android:id="@+id/statisticsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/deadLutemonsButton"
+        app:layout_constraintTop_toBottomOf="@+id/rvLutemonList" />
 </androidx.constraintlayout.widget.ConstraintLayout>

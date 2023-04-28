@@ -65,6 +65,7 @@ public class TrainingAreaActivity extends AppCompatActivity {
 
     public void StartTraining(Lutemon selectedLutemon) {
         Lutemon.setExperience(selectedLutemon);
+        Lutemon.addTrainingDay(selectedLutemon);
     }
 
 }

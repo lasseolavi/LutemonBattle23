@@ -69,9 +69,6 @@ public class NewLutemonActivity extends AppCompatActivity {
                 break;
         }
 
-
-
-
         lutemonListAdapter = new LutemonListAdapter(this, Storage.getInstance().listLutemons());
         lutemonListAdapter.notifyDataSetChanged();
     }

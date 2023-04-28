@@ -10,7 +10,7 @@ public class BattleFieldScreen {
 
     private static final String LINE = "_____________________________";
 
-    private static final String valkoinenCharacter =
+    private static final String vihreaCharacter =
                     "         _,-----._\n" +
                     "      ,;_         _`, \n" +
                     "     ((  `-._.-'`  ))\n" +
@@ -22,11 +22,17 @@ public class BattleFieldScreen {
                     "    ,'_._\\\\       /_._', \n" +
                     "    `\"\"` `\"`       `\"` `\"\"`\n" +
                     "    \n";
-    private static final String vihreaCharacter =
-            "     /|     /|_/|\n" +
-            "    / |__  / | `||\n" +
-            "   /_/|_/ /_/--|_||";
     private static final String pinkkiCharacter =
+            "     _____ \n" +
+            "    /|_||_. \\ __ \n "+
+            "  (   _    _ _\n" +
+            "=`-(_)--(_)-'======.\n" +
+            "  /   `Y''   \\|   \\\n" +
+            " l \\__..--''-.\\   <_\n" +
+            "`--'          7`----J \n";
+
+
+    private static final String valkoinenCharacter =
             "       /\\     /\\\n" +
             "      /  \\___/  \\\n" +
             "      \\ | o o | /\n" +
@@ -93,8 +99,6 @@ public class BattleFieldScreen {
             default:
                 battleString += "TAPAHTUI VIRHE";
         }
-
-
 
         return battleString;
     }
