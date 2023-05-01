@@ -38,6 +38,7 @@ public class DeadLutemonListAdapter extends RecyclerView.Adapter<DeadLutemonsVie
     public void sortLutemons(ArrayList<Lutemon> lutemonList) {
         Collections.sort(lutemonList, new Comparator<Lutemon>() {
             @Override
+            // Sort Lutemons by their name
             public int compare(Lutemon lutemon, Lutemon t1) {
                 return lutemon.getName().compareTo(t1.getName());
             }

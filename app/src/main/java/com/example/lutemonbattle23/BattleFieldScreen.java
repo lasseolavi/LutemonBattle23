@@ -10,7 +10,7 @@ public class BattleFieldScreen {
 
     private static final String LINE = "_____________________________";
 
-    private static final String vihreaCharacter =
+    private static final String greenCharacter =
                     "         _,-----._\n" +
                     "      ,;_         _`, \n" +
                     "     ((  `-._.-'`  ))\n" +
@@ -22,7 +22,7 @@ public class BattleFieldScreen {
                     "    ,'_._\\\\       /_._', \n" +
                     "    `\"\"` `\"`       `\"` `\"\"`\n" +
                     "    \n";
-    private static final String pinkkiCharacter =
+    private static final String pinkCharacter =
             "     _____ \n" +
             "    /|_||_. \\ __ \n "+
             "  (   _    _ _\n" +
@@ -32,7 +32,7 @@ public class BattleFieldScreen {
             "`--'          7`----J \n";
 
 
-    private static final String valkoinenCharacter =
+    private static final String whiteCharacter =
             "       /\\     /\\\n" +
             "      /  \\___/  \\\n" +
             "      \\ | o o | /\n" +
@@ -43,7 +43,7 @@ public class BattleFieldScreen {
             "/  _ `------' _    \\\n" +
             "   (_)   |    (_) \n" +
             "         |         \n";
-    private static final String oranssiCharacter =
+    private static final String orangeCharacter =
             "       /'\\\n" +
             "      / o \\\n" +
             "     / o o \\\n" +
@@ -53,7 +53,7 @@ public class BattleFieldScreen {
             "   |__|_|__|\n" +
             "   /-'Y'-' \\\n" +
             "  (__/ \\__)";
-    private static final String mustaCharacter =
+    private static final String blackCharacter =
             "     /\\__/\\\n" +
             "    /`     '\\\n" +
             "  === 0  0 ===\n" +
@@ -87,15 +87,15 @@ public class BattleFieldScreen {
         //print character
         switch (fighter.getColor()){
             case "Valkoinen":
-                battleString += "\n" + valkoinenCharacter;
+                battleString += "\n" + whiteCharacter;
             case "Vihreä":
-                battleString += "\n" + vihreaCharacter;
+                battleString += "\n" + greenCharacter;
             case "Pinkki":
-                battleString += "\n" + pinkkiCharacter;
+                battleString += "\n" + pinkCharacter;
             case "Oranssi":
-                battleString += "\n" + oranssiCharacter;
+                battleString += "\n" + orangeCharacter;
             case "Musta":
-                battleString += "\n" + mustaCharacter;
+                battleString += "\n" + blackCharacter;
             default:
                 battleString += "TAPAHTUI VIRHE";
         }
@@ -104,6 +104,7 @@ public class BattleFieldScreen {
     }
 
     public String battleLogScreen(int damage, Lutemon attacker, Lutemon defender){
+        // Print battlelog
         String battleText = "";
         if (damage < defender.health) {
             battleText = attacker.getName()+" hyökkäsi ja teki "+ damage+" pistettä vahinkoa\n";

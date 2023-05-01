@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Valitse yksi taistelija"
+        android:text="Valitse yksi taistelija, jota haluat harjoittaa"
         app:layout_constraintBottom_toTopOf="@+id/rvTrainLutemonList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

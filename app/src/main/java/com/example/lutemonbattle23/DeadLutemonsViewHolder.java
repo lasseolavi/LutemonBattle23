@@ -53,6 +53,23 @@ public class DeadLutemonsViewHolder extends RecyclerView.ViewHolder{
         name.setText(lutemon.getName()+" ("+lutemon.getColor()+")");
         attack_defence.setText("Hyökkäys: "+lutemon.getAttack() + ", Puolustus: " + lutemon.getDefense());
         health_experience.setText("Elämä: "+lutemon.getHealth()+"/"+lutemon.getMaxHealth() + ", Kokemus: " + lutemon.getExperience());
+        switch (lutemon.getAvatarImage()) {
+            case 0:
+                lutemonAvatar.setImageResource(R.drawable.blackavatar);
+                break;
+            case 1:
+                lutemonAvatar.setImageResource(R.drawable.greenavatar);
+                break;
+            case 2:
+                lutemonAvatar.setImageResource(R.drawable.orangeavatar);
+                break;
+            case 3:
+                lutemonAvatar.setImageResource(R.drawable.pinkavatar);
+                break;
+            case 4:
+                lutemonAvatar.setImageResource(R.drawable.whiteavatar);
+                break;
+        }
 
 
     }

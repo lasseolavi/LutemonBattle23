@@ -28,6 +28,8 @@ public class Storage {
         return storage;
     }
     public void addLutemon(Lutemon lutemon, Context context) {
+        // The app will only save one ArrayList to file so we
+        // merge lists and save that
         lutemons.add(lutemon);
         allLutemons.addAll(deadLutemons);
         allLutemons.addAll(lutemons);
@@ -38,6 +40,7 @@ public class Storage {
         } catch (IOException e) {
             System.out.println("Lutemonien tallentaminen ei onnistunut");
         }
+        // After saving the helper list will be cleared
         allLutemons.clear();
     }
     public void saveCurrentState(Context context) {
@@ -50,15 +53,13 @@ public class Storage {
         } catch (IOException e) {
             System.out.println("Lutemonien tallentaminen ei onnistunut");
         }
-        System.out.println("Tallennus tehty " + allLutemons.size());
         allLutemons.clear();
     }
     public Storage loadLutemons(Context context) {
-        System.out.println("loadLutemons aloitettu");
         try {
             ObjectInputStream lutemonReader = new ObjectInputStream(context.openFileInput(FILENAME));
             allLutemons = (ArrayList<Lutemon>) lutemonReader.readObject();
-            System.out.println("haku tehty " + allLutemons.size());
+            // We need to separate dead lutemons from alive ones
             for (Lutemon lutemon: allLutemons) {
                 if (lutemon.getHealth() == 0 ) {
                     deadLutemons.add(lutemon);
@@ -67,7 +68,7 @@ public class Storage {
                 }
             }
             // Find out the highest id number and set id to the next
-            savedId = lutemons.isEmpty() ? 1 : lutemons.get(lutemons.size()-1).getId() +1 ;
+            savedId = allLutemons.isEmpty() ? 1 : allLutemons.get(allLutemons.size()-1).getId() +1 ;
             allLutemons.clear();
             lutemonReader.close();
 

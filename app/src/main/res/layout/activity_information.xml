@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,11 +20,12 @@
         android:id="@+id/informationLutemonTrainingDaysTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="30dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/informationHeadTv" />
+        app:layout_constraintTop_toBottomOf="@+id/avatarImageView" />
 
     <TextView
         android:id="@+id/informationBattlesWonTv"
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/informationLutemonTrainingDaysTv" />
@@ -41,7 +44,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="49dp"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/informationBattlesWonTv" />
+
+    <ImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="130dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/informationHeadTv"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
