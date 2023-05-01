@@ -72,31 +72,41 @@ public class BattleFieldActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Lutemon currentAttacker = randomLutemon(firstSelection, secondSelection);
+                    //BattleField algorithm starts here
+                    Lutemon currentAttacker = randomLutemon(firstSelection, secondSelection); //Pick starter randomly
                     while (firstSelected.getHealth() > 0 && secondSelected.getHealth() > 0 ) {
                         Lutemon defendingLutemon = getOtherLutemon(currentAttacker, firstSelection, secondSelection);
+                        // Make appropriate texts for textViews
                         String firstSelectionText = screen.printLutemonBattleScreen(firstSelected);
                         String secondSelectionText = screen.printLutemonBattleScreen(secondSelected);
+                        //Print texts
                         firstSelectionTv.setText(firstSelectionText);
                         secondSelectionTv.setText(secondSelectionText);
+                        // Calculate damage
                         int damage = calculateDamage(currentAttacker, defendingLutemon);
+                        // Add text to battlelog
                         String battleLogText = screen.battleLogScreen(damage, currentAttacker, defendingLutemon);
                         battleLogTv.setText(battleLogText);
                         defendingLutemon.health -= damage;
+                        // Check if defending lutemon dies
                         if (defendingLutemon.health <= 0) {
+                            // Assign winner and loser
                             Lutemon winner = currentAttacker;
                             Lutemon loser = getOtherLutemon(winner, firstSelection, secondSelection);
-                            loser.setHealth(0);
-                            storage.killLutemon(loser);
+                            loser.setHealth(0);// health cannot be negative
+                            storage.killLutemon(loser); // loser to dead arrayList
                             winner.setHealth(winner.getMaxHealth());
+                            // Add statistics to Lutemons
                             winner.addWonGame();
                             Lutemon.setExperience(winner);
                             winner.addgamePlayed();
                             loser.addgamePlayed();
+                            // Save current state of the game so no data is lost
                             storage.saveCurrentState(getApplicationContext());
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
+                                    //
                                     if (loser.equals(firstSelected)) {
                                         firstSelectionTv.setText("\n\n\n\n\n\n\t\tVOITTAJA");
                                     } else {
@@ -124,8 +134,9 @@ public class BattleFieldActivity extends AppCompatActivity {
                             });
                             break;
                         } else {
+                            // Battle continues
                             currentAttacker = defendingLutemon;
-                            Thread.sleep(200);
+                            Thread.sleep(2000);
                         }
                     }
                 } catch (InterruptedException e) {
